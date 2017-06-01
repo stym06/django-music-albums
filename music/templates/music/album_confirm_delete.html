@@ -1,0 +1,10 @@
+
+{% extends 'music/base.html' %}
+{% block title %}Confirm Delete {% endblock %}
+{% block body %}
+<form action="" method="post">{% csrf_token %}
+    <p class="bg-danger">Are you sure you want to delete "{{ object }}"?</p>
+    <button type="submit" class="btn btn-danger"> Confirm </button>
+    
+</form>
+{% endblock %}

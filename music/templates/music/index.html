@@ -1,0 +1,25 @@
+{% extends 'music/base.html' %}
+
+{% block body %}
+	{% if all_albums %}
+		{% for album in all_albums %}
+	  			<div class="col-md-3">
+	    			<div class="thumbnail">
+	      				<a href="{% url 'music:detail' album.id %}"><img src="{{album.album_logo.url}}" width="100%"></a>
+	     				 <div class="caption">
+	       					 <h3>{{ album.album_title }}</h3>
+	       					 <h4 class="text-muted">{{ album.artist }}</h4>
+	        				<p><a href="{% url 'music:detail' album.id %}" class="btn btn-primary" role="button">Songs</a>&nbsp;&nbsp;&nbsp; <a href="{% url 'music:album-delete' album.id %}" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash"></span></a>&nbsp;&nbsp;&nbsp;
+	        				<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-heart"></span></a>&nbsp;&nbsp;&nbsp;
+	        				<a role="button" href="{% url 'music:album-update' album.id %}" style="text-decoration: none;"><span class="glyphicon glyphicon-pencil""></span>&nbsp;&nbsp;Edit</a>
+	        				</p>
+	      				</div>
+	    			</div>
+	  			</div>
+		{% endfor %}
+	{%else%}
+		<h3>You don't have any albums</h3>
+	{%endif%}
+
+{% endblock %}
+
